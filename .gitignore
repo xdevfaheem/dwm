@@ -1,4 +1,6 @@
 dwm
 *.o
 *.tar.gz
-*.log
+*.rej
+*.orij
+dwm.log
