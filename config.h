@@ -110,7 +110,9 @@ static const Key keys[] = {
 	{ 0,                            XF86XK_MonBrightnessUp,     spawn,          SHCMD("brightnessctl set 10%+") },
 	{ 0,                            XF86XK_MonBrightnessDown,   spawn,          SHCMD("brightnessctl set 10%-") },
 
-
+	/* screenshot */
+	{ 0,         XK_Print, spawn, SHCMD("~/.config/dwm/scripts/screenshot.sh") },
+	{ ShiftMask, XK_Print, spawn, SHCMD("~/.config/dwm/scripts/screenshot_select.sh") },
 
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
