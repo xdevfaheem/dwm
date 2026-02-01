@@ -2,5 +2,5 @@ dwm
 *.o
 *.tar.gz
 *.rej
-*.orij
+*.orig
 dwm.log
