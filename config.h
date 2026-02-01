@@ -29,7 +29,7 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "st",       NULL,       NULL,       0,            0,           -1 },
 	{ "librewolf",  NULL,       NULL,       1 << 1,       0,           -1 },
-	{ "VSCodium", NULL,       NULL,       1 << 2,       0,           -1 },
+	{ "Code - OSS", NULL,       NULL,       1 << 2,       0,           -1 },
 };
 
 /* layout(s) */
@@ -62,9 +62,9 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "-1"; /* open dmenu in current active mon, component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-p", "OPEN:", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char *code[]  = { "vscodium", NULL };
+static const char *code[]  = { "code-oss", NULL };
 static const char *firefox[]  = { "librewolf", NULL };
-static const char *clipboard[] = { "clipcat-menu", NULL };
+static const char *clipboard[] = { "clipmenu", "-p", "COPY:", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "80x20", NULL };
 
@@ -103,20 +103,20 @@ static const Key keys[] = {
 	/* custom  */
 
 	/* mute speaker/mic */
-	{ 0,                            XF86XK_AudioMute,           spawn,          SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle") },
+	{ 0,                            XF86XK_AudioMute,           spawn,          SHCMD("volume mute") },
 	{ 0,                            XF86XK_AudioMicMute,        spawn,          SHCMD("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle") },
 
 	/* volume up/down */
-	{ 0,                            XF86XK_AudioRaiseVolume,    spawn,          SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+") },
-	{ 0,                            XF86XK_AudioLowerVolume,    spawn,          SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-") },
+	{ 0,                            XF86XK_AudioRaiseVolume,    spawn,          SHCMD("volume up") },
+	{ 0,                            XF86XK_AudioLowerVolume,    spawn,          SHCMD("volume down") },
 
 	 /* brightness up/down */
-	{ 0,                            XF86XK_MonBrightnessUp,     spawn,          SHCMD("brightnessctl set 10%+") },
-	{ 0,                            XF86XK_MonBrightnessDown,   spawn,          SHCMD("brightnessctl set 10%-") },
+	{ 0,                            XF86XK_MonBrightnessUp,     spawn,          SHCMD("backlight up") },
+    { 0,                            XF86XK_MonBrightnessDown,   spawn,          SHCMD("backlight down") },
 
-	/* screenshot */
-	{ 0,         XK_Print, spawn, SHCMD("~/.config/dwm/scripts/screenshot.sh") },
-	{ ShiftMask, XK_Print, spawn, SHCMD("~/.config/dwm/scripts/screenshot_select.sh") },
+	/* screenshot */ 
+	{ 0,                            XK_Print,                   spawn,          SHCMD("screenshot") },
+	{ ShiftMask,                    XK_Print,                   spawn,          SHCMD("screenshot_select") },
 
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
